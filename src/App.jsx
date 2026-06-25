@@ -66,8 +66,8 @@ export default function App() {
 
   // Multiplayer Activity feed
   const [activityLog, setActivityLog] = useState([
-    { id: 1, user: 'Priya (Safety Expert)', text: 'Joined the showroom session via magic link.', time: '2 mins ago', color: 'bg-pink-100 text-pink-700' },
-    { id: 2, user: 'Aarav (Legroom Inspector)', text: 'Joined as Guest with QR Code.', time: '1 min ago', color: 'bg-emerald-100 text-emerald-700' },
+    { id: 1, user: 'Priya', text: 'Joined the showroom session via magic link.', time: '2 mins ago', color: 'bg-pink-100 text-pink-700' },
+    { id: 2, user: 'Aarav', text: 'Joined as Guest with QR Code.', time: '1 min ago', color: 'bg-emerald-100 text-emerald-700' },
   ])
 
   // Booking Scheduler State
@@ -136,7 +136,7 @@ export default function App() {
     const nextVal = !toggles[key]
     setToggles(prev => ({ ...prev, [key]: nextVal }))
     
-    const logUser = key === 'bootVisualizer' ? 'Aarav (Legroom Inspector)' : 'Priya (Safety Expert)'
+    const logUser = key === 'bootVisualizer' ? 'Aarav' : 'Priya'
     const userColor = key === 'bootVisualizer' ? 'bg-emerald-100 text-emerald-700' : 'bg-pink-100 text-pink-700'
     const actionText = nextVal ? `activated ${label}.` : `deactivated ${label}.`
 
