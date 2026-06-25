@@ -101,18 +101,8 @@ export default function App() {
     if (isAnalyzing) {
       const timer = setTimeout(() => {
         setIsAnalyzing(false)
-        setCurrentScreen('showroom')
-        setActivityLog(prev => [
-          { 
-            id: Date.now(), 
-            user: 'DaveAI Assistant', 
-            text: 'Initialized multiplayer showroom workspace.', 
-            time: 'Just now', 
-            color: 'bg-blue-100 text-blue-700' 
-          },
-          ...prev
-        ])
-      }, 3000)
+        setCurrentScreen('matches')
+      }, 2000)
       return () => clearTimeout(timer)
     }
   }, [isAnalyzing])
@@ -220,6 +210,20 @@ export default function App() {
   const handleShareSummary = (e) => {
     e.preventDefault()
     triggerToast("Summary PDF successfully shared to your Family WhatsApp Group!")
+  }
+
+  const handleSelectModel = (modelName) => {
+    setCurrentScreen('showroom')
+    setActivityLog(prev => [
+      { 
+        id: Date.now(), 
+        user: 'DaveAI Assistant', 
+        text: `Initialized showroom with selected model: ${modelName}.`, 
+        time: 'Just now', 
+        color: 'bg-blue-100 text-blue-700' 
+      },
+      ...prev
+    ])
   }
 
   // Dynamic feedback microcopy text for Screen 1
@@ -594,6 +598,184 @@ export default function App() {
               </div>
             </div>
 
+          </div>
+        )}
+
+        {/* Screen: Your Family's Curated Matches */}
+        {currentScreen === 'matches' && (
+          <div className="max-w-5xl mx-auto w-full py-4 animate-in fade-in duration-500 flex flex-col items-center">
+            {/* Centered card layout wrapper */}
+            <div className="bg-white border border-[#EAECF0] rounded-[16px] p-8 shadow-sm flex flex-col items-center w-full">
+              
+              {/* Header */}
+              <h2 className="text-3xl font-serif text-[#1D2939] tracking-tight text-center" style={{ fontFamily: "'Editorial New', Georgia, serif" }}>
+                Your Family's Curated Matches
+              </h2>
+              <p className="text-sm text-[#475467] mt-2 text-center font-medium">
+                Based on your budget, safety, and comfort configuration inputs.
+              </p>
+
+              {/* Grid of 3 side-by-side card blocks */}
+              <div className="flex gap-6 mt-8 w-full text-left">
+                
+                {/* Vehicle Card 1: DaveAI Horizon SUV */}
+                <div className="w-1/3 bg-white border border-[#E4E7EC] rounded-xl p-5 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                  <div>
+                    {/* Image Container */}
+                    <div className="bg-[#F8F9FA] rounded-lg p-4 flex items-center justify-center h-40 relative overflow-hidden">
+                      <img 
+                        src="/family_suv_hero.png" 
+                        alt="DaveAI Horizon SUV" 
+                        className="max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    {/* Info */}
+                    <div className="mt-4 space-y-3">
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-[10px] bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold px-2.5 py-0.5 rounded-full">
+                          96% Match
+                        </span>
+                        <span className="text-[10px] bg-[#F2F4F7] text-[#344054] border border-[#E4E7EC] font-semibold px-2.5 py-0.5 rounded-full">
+                          5-Star NCAP
+                        </span>
+                      </div>
+                      <div>
+                        <h4 className="text-base font-medium text-[#344054]">DaveAI Horizon SUV</h4>
+                        <p className="text-sm font-bold text-[#101828] mt-1.5">₹14.2 Lakhs</p>
+                      </div>
+                      <div className="mt-2 space-y-2 text-[11px] text-[#475467] font-medium border-t border-[#F2F4F7] pt-3">
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+                          <span>Budget: Under ₹{maxBudget} Lakhs target</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#6366F1]"></span>
+                          <span>Safety: Active Guard collision assists</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                          <span>Comfort: Premium cabin with Rear AC</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <button 
+                    onClick={() => handleSelectModel('DaveAI Horizon SUV')}
+                    className="w-full bg-[#6366F1] hover:bg-[#4f46e5] text-white text-xs font-semibold py-2.5 px-4 rounded-[12px] mt-6 flex items-center justify-center gap-1.5 transition-all duration-200 active:scale-95 cursor-pointer shadow-3xs"
+                  >
+                    <span>Explore in 3D Showroom</span>
+                    <ArrowRight size={14} />
+                  </button>
+                </div>
+
+                {/* Vehicle Card 2: DaveAI E-Tron Concept */}
+                <div className="w-1/3 bg-white border border-[#E4E7EC] rounded-xl p-5 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                  <div>
+                    {/* Image Container */}
+                    <div className="bg-[#F8F9FA] rounded-lg p-4 flex items-center justify-center h-40 relative overflow-hidden">
+                      <img 
+                        src="/silver_audi.png" 
+                        alt="DaveAI E-Tron Concept" 
+                        className="max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    {/* Info */}
+                    <div className="mt-4 space-y-3">
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-[10px] bg-blue-50 text-blue-700 border border-blue-200 font-semibold px-2.5 py-0.5 rounded-full">
+                          Premium Infotainment
+                        </span>
+                        <span className="text-[10px] bg-[#F2F4F7] text-[#344054] border border-[#E4E7EC] font-semibold px-2.5 py-0.5 rounded-full">
+                          5-Star NCAP
+                        </span>
+                      </div>
+                      <div>
+                        <h4 className="text-base font-medium text-[#344054]">DaveAI E-Tron Concept</h4>
+                        <div className="flex flex-wrap items-baseline gap-1.5 mt-1.5">
+                          <p className="text-sm font-bold text-[#101828]">₹16.5 Lakhs</p>
+                          <span className="text-[10px] text-amber-600 font-medium">(Slightly exceeds budget ceiling)</span>
+                        </div>
+                      </div>
+                      <div className="mt-2 space-y-2 text-[11px] text-[#475467] font-medium border-t border-[#F2F4F7] pt-3">
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+                          <span>Budget: Flexible limit configuration</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#6366F1]"></span>
+                          <span>Safety: Active ADAS Level 2 suite</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                          <span>Comfort: Acoustic cabin glass nodes</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <button 
+                    onClick={() => handleSelectModel('DaveAI E-Tron Concept')}
+                    className="w-full bg-[#6366F1] hover:bg-[#4f46e5] text-white text-xs font-semibold py-2.5 px-4 rounded-[12px] mt-6 flex items-center justify-center gap-1.5 transition-all duration-200 active:scale-95 cursor-pointer shadow-3xs"
+                  >
+                    <span>Explore in 3D Showroom</span>
+                    <ArrowRight size={14} />
+                  </button>
+                </div>
+
+                {/* Vehicle Card 3: DaveAI Urban Cross */}
+                <div className="w-1/3 bg-white border border-[#E4E7EC] rounded-xl p-5 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                  <div>
+                    {/* Image Container */}
+                    <div className="bg-[#F8F9FA] rounded-lg p-4 flex items-center justify-center h-40 relative overflow-hidden">
+                      <img 
+                        src="/cullinan_viewport.png" 
+                        alt="DaveAI Urban Cross" 
+                        className="max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    {/* Info */}
+                    <div className="mt-4 space-y-3">
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-[10px] bg-amber-50 text-amber-700 border border-amber-200 font-semibold px-2.5 py-0.5 rounded-full">
+                          Budget Friendly
+                        </span>
+                        <span className="text-[10px] bg-[#F2F4F7] text-[#344054] border border-[#E4E7EC] font-semibold px-2.5 py-0.5 rounded-full">
+                          5-Star NCAP
+                        </span>
+                      </div>
+                      <div>
+                        <h4 className="text-base font-medium text-[#344054]">DaveAI Urban Cross</h4>
+                        <p className="text-sm font-bold text-[#101828] mt-1.5">₹11.8 Lakhs</p>
+                      </div>
+                      <div className="mt-2 space-y-2 text-[11px] text-[#475467] font-medium border-t border-[#F2F4F7] pt-3">
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+                          <span>Budget: Significant savings on base</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#6366F1]"></span>
+                          <span>Safety: Rigid high-strength steel cage</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                          <span>Comfort: Standard legroom target match</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <button 
+                    onClick={() => handleSelectModel('DaveAI Urban Cross')}
+                    className="w-full bg-[#6366F1] hover:bg-[#4f46e5] text-white text-xs font-semibold py-2.5 px-4 rounded-[12px] mt-6 flex items-center justify-center gap-1.5 transition-all duration-200 active:scale-95 cursor-pointer shadow-3xs"
+                  >
+                    <span>Explore in 3D Showroom</span>
+                    <ArrowRight size={14} />
+                  </button>
+                </div>
+
+              </div>
+            </div>
           </div>
         )}
 
