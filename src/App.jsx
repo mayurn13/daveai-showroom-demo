@@ -1090,11 +1090,11 @@ export default function App() {
                 </div>
 
                 {/* SUV Showcase Frame */}
-                <div className="my-4 flex-1 w-full relative min-h-[220px] rounded-[12px] overflow-hidden">
+                <div className="my-4 flex-1 w-full relative min-h-[220px] rounded-[12px] bg-[#F2F4F7] overflow-hidden">
                   <img 
                     src="/mahindra_xuv700.png" 
                     alt="Configured Family SUV" 
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="absolute inset-0 w-full h-full object-contain p-6"
                     style={{ filter: getPaintFilter(selectedPaint) }}
                   />
                 </div>
