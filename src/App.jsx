@@ -75,7 +75,6 @@ export default function App() {
   // Booking Scheduler State
   const [selectedDate, setSelectedDate] = useState('')
   const [selectedTime, setSelectedTime] = useState('')
-  const [selectedLocation, setSelectedLocation] = useState('')
   const [showToast, setShowToast] = useState(false)
   const [toastMessage, setToastMessage] = useState('')
   const [bookingConfirmed, setBookingConfirmed] = useState(false)
@@ -335,52 +334,36 @@ export default function App() {
         {currentScreen === 'concierge' && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto w-full">
             
-            {/* Left Column: Interactive Workshop Environment */}
-            <div className="flex flex-col items-center justify-between p-6 bg-white border border-[#EAECF0] rounded-[12px] relative overflow-hidden min-h-[380px]">
+            {/* Left Column: Visual AI Avatar */}
+            <div className="flex flex-col items-center justify-center p-8 bg-white border border-[#EAECF0] rounded-[12px] relative overflow-hidden min-h-[380px]">
               <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-20 pointer-events-none"></div>
               
-              {/* Workshop Header */}
-              <div className="w-full flex justify-between items-center border-b border-[#EAECF0] pb-3 z-10">
-                <h3 className="text-xs font-bold text-[#101828] uppercase tracking-wider">
-                  Mahindra XUV700 AX7 Workshop
-                </h3>
-                <span className="text-[10px] bg-emerald-50 text-emerald-700 font-semibold px-2 py-0.5 rounded-full border border-emerald-100 flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                  Connected
-                </span>
-              </div>
-
-              {/* Main Stage Canvas with Vehicle */}
-              <div className="relative flex-1 flex items-center justify-center py-6 min-h-[200px] w-full z-10">
-                <div className="relative inline-block">
+              <div className="relative z-10 flex flex-col items-center text-center">
+                <div className="relative w-32 h-32 mb-5 rounded-full p-0.5 border border-[#EAECF0] bg-white">
                   <img 
-                    src="/watermarked_img_2415503277561671923.png" 
-                    alt="Mahindra XUV700 AX7" 
-                    className="max-h-[180px] w-auto object-contain z-10 relative"
+                    src="/daveai_human_avatar.png" 
+                    alt="DaveAI Assistant Avatar" 
+                    className="w-full h-full object-cover rounded-full bg-white"
                   />
-                  {/* Soft Grounding Shadow */}
-                  <div className="absolute bottom-1 left-[8%] right-[8%] h-3.5 bg-black/25 blur-[6px] rounded-full z-0"></div>
-                  
-                  {/* Pulsing Green Hotspot Dot on Headlight */}
-                  <div className="absolute left-[13%] top-[49%] z-20">
-                    <span className="relative flex h-3.5 w-3.5">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500 border-2 border-white shadow-sm"></span>
-                    </span>
-                  </div>
+                  <span className="absolute bottom-1 right-1 w-3.5 h-3.5 bg-emerald-500 border-2 border-white rounded-full animate-pulse"></span>
                 </div>
+                <h3 className="text-base font-semibold text-[#101828]">DaveAI Assistant</h3>
+                <p className="text-xs text-[#475467] max-w-[260px] mt-1.5 leading-relaxed">
+                  Real-time active listening session. Balancing family constraints in the background.
+                </p>
               </div>
 
-              {/* VOICE STATUS (Static Line) */}
-              <div className="w-full mt-4 z-10">
+              {/* Animating Waveform Component Container */}
+              <div className="w-full mt-8 z-10">
                 <div className="flex justify-between items-center text-[9px] text-[#475467] mb-1.5 px-0.5 uppercase tracking-wider font-semibold">
-                  <span>VOICE STATUS</span>
-                  <span className="text-[#98A2B3] text-[9px] font-semibold">
-                    Visual Inspection Mode
+                  <span>Voice Status</span>
+                  <span className="flex items-center gap-1 text-[#6366F1]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#6366F1] animate-ping"></span>
+                    Active Loop
                   </span>
                 </div>
-                <div className="bg-[#F8F9FA] rounded-[12px] p-3 border border-[#EAECF0] flex items-center justify-center">
-                  <div className="w-full h-[2px] bg-[#EAECF0] rounded-full"></div>
+                <div className="bg-[#F8F9FA] rounded-[12px] p-3.5 border border-[#EAECF0]">
+                  <AudioWaveform />
                 </div>
               </div>
             </div>
@@ -648,11 +631,11 @@ export default function App() {
                 <div className="w-1/3 bg-white border border-[#E4E7EC] rounded-xl p-5 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
                   <div>
                     {/* Image Container */}
-                    <div className="bg-[#F8F9FA] rounded-lg p-4 flex items-center justify-center h-40 relative overflow-hidden">
+                    <div className="w-full h-40 relative overflow-hidden rounded-lg">
                       <img 
-                        src="/watermarked_img_2415503277561671923.png" 
+                        src="/family_suv_hero.png" 
                         alt="Mahindra XUV700 AX7" 
-                        className="max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
                     {/* Info */}
@@ -688,7 +671,7 @@ export default function App() {
                   
                   <button 
                     onClick={() => handleSelectModel('Mahindra XUV700 AX7')}
-                    className="w-full bg-[#101828] hover:bg-[#1f2937] text-white text-xs font-semibold py-2.5 px-4 rounded-full mt-6 flex items-center justify-center gap-1.5 transition-all duration-200 active:scale-95 cursor-pointer shadow-3xs"
+                    className="w-full bg-[#6366F1] hover:bg-[#4f46e5] text-white text-xs font-semibold py-2.5 px-4 rounded-full mt-6 flex items-center justify-center gap-1.5 transition-all duration-200 active:scale-95 cursor-pointer shadow-3xs"
                   >
                     <span>Configure Model →</span>
                   </button>
@@ -1107,20 +1090,29 @@ export default function App() {
                 </div>
 
                 {/* SUV Showcase Frame */}
-                <div className="my-6 bg-[#F8F9FA] border border-[#EAECF0] rounded-[12px] p-4 flex items-center justify-center h-48 relative overflow-hidden z-10">
+                <div className="my-6 flex items-center justify-center flex-1">
                   <img 
-                    src="/watermarked_img_2415503277561671923.png" 
-                    alt="Mahindra XUV700 AX7 Configured" 
-                    className="max-h-full object-contain"
+                    src="/silver_audi.png" 
+                    alt="Configured Family SUV" 
+                    className="w-full max-w-[420px] object-contain rounded-[12px]"
+                    style={{ filter: getPaintFilter(selectedPaint) }}
                   />
                 </div>
 
-                {/* Configured Text & Badge */}
-                <div className="mt-4 border-t border-[#EAECF0] pt-4 flex flex-col items-center text-center z-10">
-                  <h3 className="text-base font-bold text-[#101828]">Mahindra XUV700 AX7 Configured</h3>
-                  <span className="mt-2 text-[10px] bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold px-2.5 py-0.5 rounded-full">
-                    5-Star Safety
-                  </span>
+                {/* Configuration Summary Badges */}
+                <div className="grid grid-cols-3 gap-2.5 pt-4 border-t border-[#EAECF0] text-center z-10">
+                  <div className="bg-[#F8F9FA] rounded-[12px] p-2.5 border border-[#EAECF0]">
+                    <span className="text-[9px] uppercase tracking-wider text-[#475467] block font-medium">Specs Price</span>
+                    <span className="text-xs font-bold text-[#101828] block mt-0.5">₹{currentSpecPrice.toFixed(2)}L</span>
+                  </div>
+                  <div className="bg-[#F8F9FA] rounded-[12px] p-2.5 border border-[#EAECF0]">
+                    <span className="text-[9px] uppercase tracking-wider text-[#475467] block font-medium">Safety rating</span>
+                    <span className="text-xs font-bold text-[#101828] block mt-0.5">5-Star NCAP</span>
+                  </div>
+                  <div className="bg-[#F8F9FA] rounded-[12px] p-2.5 border border-[#EAECF0]">
+                    <span className="text-[9px] uppercase tracking-wider text-[#475467] block font-medium">Legroom</span>
+                    <span className="text-xs font-bold text-[#101828] block mt-0.5">40 Inches</span>
+                  </div>
                 </div>
               </div>
 
@@ -1128,28 +1120,59 @@ export default function App() {
               <div className="bg-white border border-[#EAECF0] rounded-[12px] p-8 flex flex-col justify-between min-h-[350px]">
                 
                 <div>
-                  <h2 className="text-2xl font-serif text-[#101828] leading-snug">
-                    Ready for the Next Step?
+                  <h2 className="text-base font-semibold text-[#101828] leading-snug">
+                    Your Custom Family Spec
                   </h2>
-                  <p className="text-xs text-[#475467] mt-2 font-medium leading-relaxed">
-                    We’ve balanced your safety, comfort, and budget targets. The next step is a real-world drive.
+                  <p className="text-xs text-[#475467] mt-1.5 font-medium">
+                    Configured collectively by Raj, Priya, and Aarav.
                   </p>
 
-                  {/* Booking Details Input Fields */}
+                  {/* Specification summary details */}
+                  <div className="mt-5 space-y-3.5">
+                    
+                    <div className="flex justify-between items-center py-2 border-b border-[#EAECF0] text-xs font-medium">
+                      <span className="text-[#475467]">Finance Plan Estimation</span>
+                      <span className="font-semibold text-[#101828]">
+                        ₹{Math.round((currentSpecPrice / 14.20) * 24500).toLocaleString()}/month
+                      </span>
+                    </div>
+
+                    <div className="flex justify-between items-center py-2 border-b border-[#EAECF0] text-xs font-medium">
+                      <span className="text-[#475467]">Safety Architecture</span>
+                      <span className="font-semibold text-[#101828] flex items-center gap-1">
+                        <Shield size={12} className="text-[#6366F1]" />
+                        5-Star NCAP + ADAS Level 2
+                      </span>
+                    </div>
+
+                    <div className="flex justify-between items-center py-2 border-b border-[#EAECF0] text-xs font-medium">
+                      <span className="text-[#475467]">Cabin Comfort Package</span>
+                      <span className="font-semibold text-[#101828] flex items-center gap-1">
+                        <Sun size={12} className="text-amber-500" />
+                        Premium Tech Pack with Rear AC
+                      </span>
+                    </div>
+
+                  </div>
+                </div>
+
+                {/* Conversion Widget Scheduler */}
+                <div className="mt-8 pt-4 border-t border-[#EAECF0] space-y-4">
+                  
                   {bookingConfirmed ? (
-                    <div className="bg-[#ECFDF5] border border-[#D1FADF] rounded-[12px] p-4 text-center space-y-2 mt-6 animate-in zoom-in-95 duration-200">
+                    <div className="bg-[#ECFDF5] border border-[#D1FADF] rounded-[12px] p-4 text-center space-y-2 animate-in zoom-in-95 duration-200">
                       <div className="w-8 h-8 rounded-full bg-[#027A48] text-white flex items-center justify-center mx-auto shadow-sm">
                         <Check size={16} className="stroke-[3px]" />
                       </div>
                       <h4 className="text-xs font-semibold text-[#027A48]">Booking Confirmed!</h4>
                       <p className="text-[11px] text-[#027A48] leading-relaxed">
-                        A DaveAI driver will bring the spec-configured SUV to <strong className="font-semibold">{selectedLocation || 'your location'}</strong> on <strong className="font-semibold">{selectedDate || 'your preferred date'}</strong> for your test drive.
+                        A DaveAI driver will bring the spec-configured SUV to your doorstep on <strong className="font-semibold">{selectedDate}</strong> at <strong className="font-semibold">{selectedTime}</strong> for a family experience.
                       </p>
                       <button 
                         onClick={() => {
                           setBookingConfirmed(false)
                           setSelectedDate('')
-                          setSelectedLocation('')
+                          setSelectedTime('')
                         }}
                         className="text-[10px] text-[#027A48] hover:text-[#065f46] underline font-semibold mt-1 cursor-pointer"
                       >
@@ -1157,65 +1180,74 @@ export default function App() {
                       </button>
                     </div>
                   ) : (
-                    <div className="space-y-4 mt-6">
-                      
-                      {/* Preferred Date Input */}
-                      <div className="space-y-1">
-                        <label className="text-xs font-semibold text-[#344054]">
-                          Preferred Date (MM/DD)
-                        </label>
-                        <input 
-                          type="text"
-                          value={selectedDate}
-                          onChange={(e) => setSelectedDate(e.target.value)}
-                          placeholder="e.g., 07/15"
-                          className="w-full bg-white border border-[#D0D5DD] rounded-lg text-xs py-2.5 px-3 focus:outline-none focus:ring-2 focus:ring-[#6366F1]/20 focus:border-[#6366F1] font-medium text-[#344054] shadow-3xs"
-                        />
+                    <div className="space-y-3.5">
+                      <div>
+                        <h4 className="text-xs font-semibold text-[#101828]">Experience It Together</h4>
+                        <p className="text-[11px] text-[#475467] mt-0.5 font-medium">
+                          Select a date and time slot for a complimentary doorstep test drive of your custom configuration.
+                        </p>
                       </div>
 
-                      {/* Preferred Location Input */}
-                      <div className="space-y-1">
-                        <label className="text-xs font-semibold text-[#344054]">
-                          Preferred Location
-                        </label>
-                        <input 
-                          type="text"
-                          value={selectedLocation}
-                          onChange={(e) => setSelectedLocation(e.target.value)}
-                          placeholder="e.g., Downtown Bangalore Dealership"
-                          className="w-full bg-white border border-[#D0D5DD] rounded-lg text-xs py-2.5 px-3 focus:outline-none focus:ring-2 focus:ring-[#6366F1]/20 focus:border-[#6366F1] font-medium text-[#344054] shadow-3xs"
-                        />
+                      <div className="grid grid-cols-2 gap-3">
+                        {/* Select Date Dropdown */}
+                        <div className="relative">
+                          <select 
+                            value={selectedDate} 
+                            onChange={(e) => setSelectedDate(e.target.value)}
+                            className="w-full bg-white border border-[#D0D5DD] rounded-lg text-xs py-2.5 px-3 pr-8 appearance-none focus:outline-none focus:ring-2 focus:ring-[#6366F1]/20 focus:border-[#6366F1] font-medium text-[#344054] shadow-3xs cursor-pointer"
+                          >
+                            <option value="">Select Date</option>
+                            <option value="Tomorrow, June 25">Tomorrow, June 25</option>
+                            <option value="Friday, June 26">Friday, June 26</option>
+                            <option value="Saturday, June 27">Saturday, June 27</option>
+                          </select>
+                          <ChevronDown size={14} className="absolute right-2.5 top-3 text-[#475467] pointer-events-none" />
+                        </div>
+
+                        {/* Select Time Dropdown */}
+                        <div className="relative">
+                          <select 
+                            value={selectedTime} 
+                            onChange={(e) => setSelectedTime(e.target.value)}
+                            className="w-full bg-white border border-[#D0D5DD] rounded-lg text-xs py-2.5 px-3 pr-8 appearance-none focus:outline-none focus:ring-2 focus:ring-[#6366F1]/20 focus:border-[#6366F1] font-medium text-[#344054] shadow-3xs cursor-pointer"
+                          >
+                            <option value="">Select Time Slot</option>
+                            <option value="10:00 AM - 12:00 PM">10:00 AM - 12:00 PM</option>
+                            <option value="2:00 PM - 4:00 PM">2:00 PM - 4:00 PM</option>
+                            <option value="5:00 PM - 7:00 PM">5:00 PM - 7:00 PM</option>
+                          </select>
+                          <ChevronDown size={14} className="absolute right-2.5 top-3 text-[#475467] pointer-events-none" />
+                        </div>
                       </div>
 
-                      {/* Confirm button */}
                       <button 
                         onClick={() => {
-                          if (!selectedDate || !selectedLocation) {
-                            triggerToast("Please enter a preferred date and location first.")
+                          if (!selectedDate || !selectedTime) {
+                            triggerToast("Please select a date and time slot first.")
                             return
                           }
                           setBookingConfirmed(true)
-                          triggerToast("Doorstep Test Drive Configured!")
+                          triggerToast("Doorstep Test Drive Booked!")
                         }}
-                        className="w-full bg-[#6366F1] hover:bg-[#4f46e5] text-white text-xs font-semibold py-2.5 px-4 rounded-[12px] flex items-center justify-center gap-1.5 transition-all duration-200 active:scale-95 shadow-xs cursor-pointer mt-4"
+                        className="w-full bg-[#6366F1] hover:bg-[#4f46e5] text-white text-xs font-semibold py-2 px-4 rounded-[12px] flex items-center justify-center gap-1.5 transition-all duration-200 active:scale-95 shadow-xs cursor-pointer"
                       >
-                        <span>Confirm Test Drive Slot</span>
-                        <ArrowRight size={14} />
+                        <Calendar size={14} />
+                        Book Family Doorstep Test Drive
                       </button>
                     </div>
                   )}
 
-                </div>
+                  <div className="text-center pt-2">
+                    <a 
+                      href="#" 
+                      onClick={handleShareSummary}
+                      className="text-[10px] text-[#475467] hover:text-[#6366F1] font-semibold transition-colors flex items-center justify-center gap-1"
+                    >
+                      <Share2 size={10} />
+                      Share PDF summary to family WhatsApp group
+                    </a>
+                  </div>
 
-                <div className="text-center pt-4 mt-auto">
-                  <a 
-                    href="#" 
-                    onClick={handleShareSummary}
-                    className="text-[10px] text-[#475467] hover:text-[#6366F1] font-semibold transition-colors flex items-center justify-center gap-1"
-                  >
-                    <Share2 size={10} />
-                    Share PDF summary to family WhatsApp group
-                  </a>
                 </div>
 
               </div>
