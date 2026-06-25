@@ -21,7 +21,9 @@ import {
   Building2,
   ChevronDown,
   Mic,
-  Send
+  Send,
+  Wallet,
+  Sofa
 } from 'lucide-react'
 import AudioWaveform from './components/AudioWaveform'
 import CarVisualizer from './components/CarVisualizer'
@@ -400,7 +402,9 @@ export default function App() {
                   <div className="space-y-1.5">
                     <div className="flex justify-between items-baseline">
                       <label className="text-xs font-medium text-[#344054] flex items-center gap-1.5">
-                        <span className="w-4.5 h-4.5 rounded-full bg-indigo-50 text-[#6366F1] text-[9px] font-bold flex items-center justify-center">R</span>
+                        <span className="w-4.5 h-4.5 rounded-full bg-indigo-50 text-[#6366F1] flex items-center justify-center">
+                          <Wallet size={10} className="stroke-[2.5px]" />
+                        </span>
                         Budget
                       </label>
                       <span className="flex items-center gap-0.5 bg-[#F2F4F7] text-[#364152] px-2.5 py-1 rounded-[6px] text-[11px] font-medium border border-transparent focus-within:border-[#6366F1]/30">
@@ -447,7 +451,9 @@ export default function App() {
                   <div className="space-y-1.5">
                     <div className="flex justify-between items-baseline">
                       <label className="text-xs font-medium text-[#344054] flex items-center gap-1.5">
-                        <span className="w-4.5 h-4.5 rounded-full bg-pink-100 text-pink-600 text-[9px] font-bold flex items-center justify-center">P</span>
+                        <span className="w-4.5 h-4.5 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center">
+                          <Shield size={10} className="stroke-[2.5px]" />
+                        </span>
                         Safety Rating
                       </label>
                       <span className="text-[11px] font-medium text-[#364152] bg-[#EEF2F6] px-2 py-1 rounded-[6px]">
@@ -476,7 +482,9 @@ export default function App() {
                   <div className="space-y-1.5">
                     <div className="flex justify-between items-baseline">
                       <label className="text-xs font-medium text-[#344054] flex items-center gap-1.5">
-                        <span className="w-4.5 h-4.5 rounded-full bg-emerald-100 text-emerald-600 text-[9px] font-bold flex items-center justify-center">A</span>
+                        <span className="w-4.5 h-4.5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center">
+                          <Sofa size={10} className="stroke-[2.5px]" />
+                        </span>
                         Cabin Comfort
                       </label>
                       <span className="text-[11px] font-medium text-[#364152] bg-[#EEF2F6] px-2 py-1 rounded-[6px]">
