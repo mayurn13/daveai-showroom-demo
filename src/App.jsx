@@ -278,9 +278,6 @@ export default function App() {
             <div>
               <div className="flex items-center gap-2">
                 <h1 className="text-sm font-bold tracking-tight text-[#101828]">DaveAI Automotive</h1>
-                <span className="text-[10px] bg-[#EEF2F6] text-[#364152] px-2 py-1 rounded-[6px] border border-[#EAECF0] font-medium flex items-center gap-1">
-                  <Building2 size={8} /> B2B OEM License
-                </span>
               </div>
               <p className="text-[10px] text-[#475467] font-medium mt-0.5">Multiplayer Family Showroom Demo</p>
             </div>
