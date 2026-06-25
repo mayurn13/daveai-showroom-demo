@@ -683,7 +683,7 @@ export default function App() {
                     {/* Image Container */}
                     <div className="w-full h-40 relative overflow-hidden rounded-lg">
                       <img 
-                        src="/silver_audi.png" 
+                        src="/tata_safari.png" 
                         alt="Tata Safari Accomplished" 
                         className="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
                       />
@@ -736,7 +736,7 @@ export default function App() {
                     {/* Image Container */}
                     <div className="w-full h-40 relative overflow-hidden rounded-lg">
                       <img 
-                        src="/cullinan_viewport.png" 
+                        src="/hyundai_alcazar.png" 
                         alt="Hyundai Alcazar Signature" 
                         className="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
                       />
