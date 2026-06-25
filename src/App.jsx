@@ -613,7 +613,7 @@ export default function App() {
                 onClick={() => setCurrentScreen('concierge')}
                 className="self-start text-sm font-medium text-[#475467] hover:text-[#101828] transition-colors flex items-center gap-1 mb-4 cursor-pointer"
               >
-                <span>← Back to Sliders</span>
+                <span>← Back to Mixers</span>
               </button>
 
               {/* Header */}
