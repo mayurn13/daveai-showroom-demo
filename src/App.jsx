@@ -1094,7 +1094,7 @@ export default function App() {
                   <img 
                     src="/mahindra_xuv700.png" 
                     alt="Configured Family SUV" 
-                    className="absolute inset-0 w-full h-full object-contain p-6"
+                    className="absolute inset-0 w-full h-full object-cover rounded-[12px]"
                     style={{ filter: getPaintFilter(selectedPaint) }}
                   />
                 </div>
