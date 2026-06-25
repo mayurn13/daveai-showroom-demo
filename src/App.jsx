@@ -671,7 +671,7 @@ export default function App() {
                   
                   <button 
                     onClick={() => handleSelectModel('Mahindra XUV700 AX7')}
-                    className="w-full bg-[#101828] hover:bg-[#1f2937] text-white text-xs font-semibold py-2.5 px-4 rounded-full mt-6 flex items-center justify-center gap-1.5 transition-all duration-200 active:scale-95 cursor-pointer shadow-3xs"
+                    className="w-full bg-[#6366F1] hover:bg-[#4f46e5] text-white text-xs font-semibold py-2.5 px-4 rounded-full mt-6 flex items-center justify-center gap-1.5 transition-all duration-200 active:scale-95 cursor-pointer shadow-3xs"
                   >
                     <span>Configure Model →</span>
                   </button>
