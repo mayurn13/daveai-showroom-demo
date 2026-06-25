@@ -213,6 +213,7 @@ export default function App() {
   }
 
   const handleSelectModel = (modelName) => {
+    console.log("Selected Model:", modelName)
     setCurrentScreen('showroom')
     setActivityLog(prev => [
       { 
@@ -662,10 +663,9 @@ export default function App() {
                   
                   <button 
                     onClick={() => handleSelectModel('DaveAI Horizon SUV')}
-                    className="w-full bg-[#6366F1] hover:bg-[#4f46e5] text-white text-xs font-semibold py-2.5 px-4 rounded-[12px] mt-6 flex items-center justify-center gap-1.5 transition-all duration-200 active:scale-95 cursor-pointer shadow-3xs"
+                    className="w-full bg-[#101828] hover:bg-[#1f2937] text-white text-xs font-semibold py-2.5 px-4 rounded-full mt-6 flex items-center justify-center gap-1.5 transition-all duration-200 active:scale-95 cursor-pointer shadow-3xs"
                   >
-                    <span>Explore in 3D Showroom</span>
-                    <ArrowRight size={14} />
+                    <span>Configure Model →</span>
                   </button>
                 </div>
 
@@ -716,10 +716,9 @@ export default function App() {
                   
                   <button 
                     onClick={() => handleSelectModel('DaveAI E-Tron Concept')}
-                    className="w-full bg-[#6366F1] hover:bg-[#4f46e5] text-white text-xs font-semibold py-2.5 px-4 rounded-[12px] mt-6 flex items-center justify-center gap-1.5 transition-all duration-200 active:scale-95 cursor-pointer shadow-3xs"
+                    className="w-full bg-white border border-[#D0D5DD] hover:bg-gray-50 text-[#344054] text-xs font-semibold py-2.5 px-4 rounded-full mt-6 flex items-center justify-center gap-1.5 transition-all duration-200 active:scale-95 cursor-pointer shadow-3xs"
                   >
-                    <span>Explore in 3D Showroom</span>
-                    <ArrowRight size={14} />
+                    <span>Inspect Layout</span>
                   </button>
                 </div>
 
@@ -767,10 +766,9 @@ export default function App() {
                   
                   <button 
                     onClick={() => handleSelectModel('DaveAI Urban Cross')}
-                    className="w-full bg-[#6366F1] hover:bg-[#4f46e5] text-white text-xs font-semibold py-2.5 px-4 rounded-[12px] mt-6 flex items-center justify-center gap-1.5 transition-all duration-200 active:scale-95 cursor-pointer shadow-3xs"
+                    className="w-full bg-white border border-[#D0D5DD] hover:bg-gray-50 text-[#344054] text-xs font-semibold py-2.5 px-4 rounded-full mt-6 flex items-center justify-center gap-1.5 transition-all duration-200 active:scale-95 cursor-pointer shadow-3xs"
                   >
-                    <span>Explore in 3D Showroom</span>
-                    <ArrowRight size={14} />
+                    <span>Inspect Layout</span>
                   </button>
                 </div>
 
