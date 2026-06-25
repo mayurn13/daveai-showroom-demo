@@ -1092,7 +1092,7 @@ export default function App() {
                 {/* SUV Showcase Frame */}
                 <div className="my-6 flex items-center justify-center flex-1">
                   <img 
-                    src="/silver_audi.png" 
+                    src="/mahindra_xuv700.png" 
                     alt="Configured Family SUV" 
                     className="w-full max-w-[420px] object-contain rounded-[12px]"
                     style={{ filter: getPaintFilter(selectedPaint) }}
