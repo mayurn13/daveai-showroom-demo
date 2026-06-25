@@ -592,7 +592,7 @@ export default function App() {
                     disabled={isAnalyzing}
                     className="bg-[#6366F1] hover:bg-[#4f46e5] disabled:bg-gray-400 text-white text-xs font-semibold py-2 px-4 rounded-[12px] flex items-center gap-1.5 group transition-all duration-200 active:scale-95 shadow-3xs disabled:scale-100 disabled:cursor-not-allowed cursor-pointer"
                   >
-                    {isAnalyzing ? 'Optimizing...' : 'Launch 3D Showroom'}
+                    {isAnalyzing ? 'Optimizing...' : 'Find Family Matches'}
                     <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
                   </button>
                 </div>
