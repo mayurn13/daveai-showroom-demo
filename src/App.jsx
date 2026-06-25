@@ -633,7 +633,7 @@ export default function App() {
                     {/* Image Container */}
                     <div className="w-full h-40 relative overflow-hidden rounded-lg">
                       <img 
-                        src="/family_suv_hero.png" 
+                        src="/mahindra_xuv700.png" 
                         alt="Mahindra XUV700 AX7" 
                         className="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
                       />
