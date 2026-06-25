@@ -606,8 +606,16 @@ export default function App() {
         {currentScreen === 'matches' && (
           <div className="max-w-5xl mx-auto w-full py-4 animate-in fade-in duration-500 flex flex-col items-center">
             {/* Centered card layout wrapper */}
-            <div className="bg-white border border-[#EAECF0] rounded-[16px] p-8 shadow-sm flex flex-col items-center w-full">
+            <div className="bg-white border border-[#EAECF0] rounded-[16px] p-8 shadow-sm flex flex-col items-center w-full relative">
               
+              {/* Back Button */}
+              <button 
+                onClick={() => setCurrentScreen('concierge')}
+                className="self-start text-sm font-medium text-[#475467] hover:text-[#101828] transition-colors flex items-center gap-1 mb-4 cursor-pointer"
+              >
+                <span>← Back to Sliders</span>
+              </button>
+
               {/* Header */}
               <h2 className="text-3xl font-serif text-[#1D2939] tracking-tight text-center" style={{ fontFamily: "'Editorial New', Georgia, serif" }}>
                 Your Family's Curated Matches
@@ -619,15 +627,15 @@ export default function App() {
               {/* Grid of 3 side-by-side card blocks */}
               <div className="flex gap-6 mt-8 w-full text-left">
                 
-                {/* Vehicle Card 1: DaveAI Horizon SUV */}
+                {/* Vehicle Card 1: Mahindra XUV700 AX7 */}
                 <div className="w-1/3 bg-white border border-[#E4E7EC] rounded-xl p-5 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
                   <div>
                     {/* Image Container */}
-                    <div className="bg-[#F8F9FA] rounded-lg p-4 flex items-center justify-center h-40 relative overflow-hidden">
+                    <div className="w-full h-40 relative overflow-hidden rounded-lg">
                       <img 
                         src="/family_suv_hero.png" 
-                        alt="DaveAI Horizon SUV" 
-                        className="max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                        alt="Mahindra XUV700 AX7" 
+                        className="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
                     {/* Info */}
@@ -641,7 +649,7 @@ export default function App() {
                         </span>
                       </div>
                       <div>
-                        <h4 className="text-base font-medium text-[#344054]">DaveAI Horizon SUV</h4>
+                        <h4 className="text-base font-medium text-[#344054]">Mahindra XUV700 AX7</h4>
                         <p className="text-sm font-bold text-[#101828] mt-1.5">₹14.2 Lakhs</p>
                       </div>
                       <div className="mt-2 space-y-2 text-[11px] text-[#475467] font-medium border-t border-[#F2F4F7] pt-3">
@@ -650,7 +658,7 @@ export default function App() {
                           <span>Budget: Under ₹{maxBudget} Lakhs target</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#6366F1]"></span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#E60076]"></span>
                           <span>Safety: Active Guard collision assists</span>
                         </div>
                         <div className="flex items-center gap-2">
@@ -662,22 +670,22 @@ export default function App() {
                   </div>
                   
                   <button 
-                    onClick={() => handleSelectModel('DaveAI Horizon SUV')}
+                    onClick={() => handleSelectModel('Mahindra XUV700 AX7')}
                     className="w-full bg-[#101828] hover:bg-[#1f2937] text-white text-xs font-semibold py-2.5 px-4 rounded-full mt-6 flex items-center justify-center gap-1.5 transition-all duration-200 active:scale-95 cursor-pointer shadow-3xs"
                   >
                     <span>Configure Model →</span>
                   </button>
                 </div>
 
-                {/* Vehicle Card 2: DaveAI E-Tron Concept */}
+                {/* Vehicle Card 2: Tata Safari Accomplished */}
                 <div className="w-1/3 bg-white border border-[#E4E7EC] rounded-xl p-5 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
                   <div>
                     {/* Image Container */}
-                    <div className="bg-[#F8F9FA] rounded-lg p-4 flex items-center justify-center h-40 relative overflow-hidden">
+                    <div className="w-full h-40 relative overflow-hidden rounded-lg">
                       <img 
                         src="/silver_audi.png" 
-                        alt="DaveAI E-Tron Concept" 
-                        className="max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                        alt="Tata Safari Accomplished" 
+                        className="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
                     {/* Info */}
@@ -691,7 +699,7 @@ export default function App() {
                         </span>
                       </div>
                       <div>
-                        <h4 className="text-base font-medium text-[#344054]">DaveAI E-Tron Concept</h4>
+                        <h4 className="text-base font-medium text-[#344054]">Tata Safari Accomplished</h4>
                         <div className="flex flex-wrap items-baseline gap-1.5 mt-1.5">
                           <p className="text-sm font-bold text-[#101828]">₹16.5 Lakhs</p>
                           <span className="text-[10px] text-amber-600 font-medium">(Slightly exceeds budget ceiling)</span>
@@ -703,7 +711,7 @@ export default function App() {
                           <span>Budget: Flexible limit configuration</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#6366F1]"></span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#E60076]"></span>
                           <span>Safety: Active ADAS Level 2 suite</span>
                         </div>
                         <div className="flex items-center gap-2">
@@ -715,22 +723,22 @@ export default function App() {
                   </div>
                   
                   <button 
-                    onClick={() => handleSelectModel('DaveAI E-Tron Concept')}
+                    onClick={() => handleSelectModel('Tata Safari Accomplished')}
                     className="w-full bg-white border border-[#D0D5DD] hover:bg-gray-50 text-[#344054] text-xs font-semibold py-2.5 px-4 rounded-full mt-6 flex items-center justify-center gap-1.5 transition-all duration-200 active:scale-95 cursor-pointer shadow-3xs"
                   >
                     <span>Inspect Layout</span>
                   </button>
                 </div>
 
-                {/* Vehicle Card 3: DaveAI Urban Cross */}
+                {/* Vehicle Card 3: Hyundai Alcazar Signature */}
                 <div className="w-1/3 bg-white border border-[#E4E7EC] rounded-xl p-5 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
                   <div>
                     {/* Image Container */}
-                    <div className="bg-[#F8F9FA] rounded-lg p-4 flex items-center justify-center h-40 relative overflow-hidden">
+                    <div className="w-full h-40 relative overflow-hidden rounded-lg">
                       <img 
                         src="/cullinan_viewport.png" 
-                        alt="DaveAI Urban Cross" 
-                        className="max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                        alt="Hyundai Alcazar Signature" 
+                        className="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
                     {/* Info */}
@@ -744,7 +752,7 @@ export default function App() {
                         </span>
                       </div>
                       <div>
-                        <h4 className="text-base font-medium text-[#344054]">DaveAI Urban Cross</h4>
+                        <h4 className="text-base font-medium text-[#344054]">Hyundai Alcazar Signature</h4>
                         <p className="text-sm font-bold text-[#101828] mt-1.5">₹11.8 Lakhs</p>
                       </div>
                       <div className="mt-2 space-y-2 text-[11px] text-[#475467] font-medium border-t border-[#F2F4F7] pt-3">
@@ -753,7 +761,7 @@ export default function App() {
                           <span>Budget: Significant savings on base</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#6366F1]"></span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#E60076]"></span>
                           <span>Safety: Rigid high-strength steel cage</span>
                         </div>
                         <div className="flex items-center gap-2">
@@ -765,7 +773,7 @@ export default function App() {
                   </div>
                   
                   <button 
-                    onClick={() => handleSelectModel('DaveAI Urban Cross')}
+                    onClick={() => handleSelectModel('Hyundai Alcazar Signature')}
                     className="w-full bg-white border border-[#D0D5DD] hover:bg-gray-50 text-[#344054] text-xs font-semibold py-2.5 px-4 rounded-full mt-6 flex items-center justify-center gap-1.5 transition-all duration-200 active:scale-95 cursor-pointer shadow-3xs"
                   >
                     <span>Inspect Layout</span>
