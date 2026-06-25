@@ -585,7 +585,7 @@ export default function App() {
                   <button 
                     onClick={() => setIsAnalyzing(true)}
                     disabled={isAnalyzing}
-                    className="bg-[#101828] hover:bg-[#1f2937] disabled:bg-gray-400 text-white text-xs font-semibold py-2 px-4 rounded-[12px] flex items-center gap-1.5 group transition-all duration-200 active:scale-95 shadow-3xs disabled:scale-100 disabled:cursor-not-allowed cursor-pointer"
+                    className="bg-[#6366F1] hover:bg-[#4f46e5] disabled:bg-gray-400 text-white text-xs font-semibold py-2 px-4 rounded-[12px] flex items-center gap-1.5 group transition-all duration-200 active:scale-95 shadow-3xs disabled:scale-100 disabled:cursor-not-allowed cursor-pointer"
                   >
                     {isAnalyzing ? 'Optimizing...' : 'Launch 3D Showroom'}
                     <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
@@ -859,7 +859,7 @@ export default function App() {
 
                     <button 
                       onClick={() => setCurrentScreen('checkout')}
-                      className="w-full bg-[#101828] hover:bg-[#1f2937] text-white text-xs font-semibold py-2 px-4 rounded-[12px] flex items-center justify-center gap-1.5 group transition-all duration-200 active:scale-95 cursor-pointer shadow-3xs"
+                      className="w-full bg-[#6366F1] hover:bg-[#4f46e5] text-white text-xs font-semibold py-2 px-4 rounded-[12px] flex items-center justify-center gap-1.5 group transition-all duration-200 active:scale-95 cursor-pointer shadow-3xs"
                     >
                       Finalize & Book Drive
                       <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
