@@ -617,7 +617,7 @@ export default function App() {
               </button>
 
               {/* Header */}
-              <h2 className="text-3xl font-serif text-[#1D2939] tracking-tight text-center" style={{ fontFamily: "'Editorial New', Georgia, serif" }}>
+              <h2 className="text-3xl font-bold text-[#1D2939] tracking-tight text-center">
                 Your Family's Curated Matches
               </h2>
               <p className="text-sm text-[#475467] mt-2 text-center font-medium">
