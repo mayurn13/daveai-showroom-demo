@@ -79,11 +79,6 @@ export default function App() {
   const [toastMessage, setToastMessage] = useState('')
   const [bookingConfirmed, setBookingConfirmed] = useState(false)
 
-  // Voice Assistant States
-  const [isListening, setIsListening] = useState(false)
-  const [isProcessing, setIsProcessing] = useState(false)
-  const [avatarSpeechBubble, setAvatarSpeechBubble] = useState(null)
-
   // Math variables based on sliders and toggles
   const ceilingNum = typeof budgetCeiling === 'number' ? budgetCeiling : parseFloat(budgetCeiling) || 15
   const maxBudget = ceilingNum
@@ -151,76 +146,6 @@ export default function App() {
     if (socketSyncEnabled) {
       triggerToast(`⚡ WebSocket Sync: Synced visualizer state for "${label}"`)
     }
-  }
-
-  const handleVoiceQuery = (text, key, label) => {
-    setIsProcessing(true)
-    
-    // Simulate short voice analysis delay
-    setTimeout(() => {
-      setIsListening(false)
-      setIsProcessing(false)
-      
-      // Auto-toggle corresponding visualizer mode
-      setToggles(prev => ({
-        bootVisualizer: key === 'bootVisualizer',
-        cabinAccess: key === 'cabinAccess',
-        isofix: key === 'isofix',
-        audioPack: key === 'audioPack'
-      }))
-
-      // Reset hotspots and set the corresponding visual response
-      setActiveHotspot(null)
-      let response = ""
-      let userLogText = ""
-      let assistantLogText = ""
-      
-      if (key === 'bootVisualizer') {
-        response = "DaveAI: Yes, Raj! The Mahindra XUV700 features an expansive boot space that comfortably fits up to three large suitcases or weekly family grocery loads."
-        userLogText = `asked: "Does it have a big trunk for groceries?"`
-        assistantLogText = `confirmed Mahindra XUV700's boot capacity is 580L.`
-      } else if (key === 'cabinAccess') {
-        response = "DaveAI: Yes, Raj! The Mahindra XUV700 cabin access is designed with generous door openings and 40 inches of rear legroom, allowing family members to get in and out with absolute comfort."
-        userLogText = `asked: "Is it easy to get into the backseat?"`
-        assistantLogText = `opened interactive cabin access visualizer highlighting door and sunroof controls.`
-      } else if (key === 'isofix') {
-        response = "DaveAI: Raj, safety is top-tier. The XUV700 offers a 5-Star NCAP rating, 6 dual-stage airbags, and robust ISOFIX child seat anchors to keep your kids secure."
-        userLogText = `asked: "Is it safe for kids?"`
-        assistantLogText = `activated child safety anchors highlight overlay.`
-      } else if (key === 'audioPack') {
-        response = "DaveAI: Raj, the Mahindra XUV700 comes with a premium Sony 12-speaker acoustic sound system and active cabin soundproofing for an immersive, quiet drive."
-        userLogText = `asked: "What audio system does it have?"`
-        assistantLogText = `turned on active soundproofing layers and premium speakers indicators.`
-      }
-
-      setAvatarSpeechBubble(response)
-
-      // Add to multiplayer activity feed log
-      setActivityLog(prev => [
-        {
-          id: Date.now() + 1,
-          user: 'DaveAI Assistant',
-          text: assistantLogText,
-          time: 'Just now',
-          color: 'bg-indigo-100 text-indigo-700 font-semibold'
-        },
-        {
-          id: Date.now(),
-          user: 'Raj (You)',
-          text: userLogText,
-          time: 'Just now',
-          color: 'bg-blue-100 text-blue-700'
-        },
-        ...prev
-      ])
-
-      // If they are on Screen 1 (concierge), auto-transition them to Screen 2 (showroom) so they see the 3D response
-      if (currentScreen === 'concierge') {
-        setCurrentScreen('showroom')
-      }
-      
-      triggerToast(`🎤 Voice query processed: focused on ${label}`)
-    }, 1200)
   }
 
   const handlePaintChange = (paintName) => {
@@ -592,18 +517,6 @@ export default function App() {
                     </label>
                     <div className="relative flex flex-col bg-white border border-[#EAECF0] rounded-[12px] shadow-3xs p-3 min-h-[96px] justify-between">
                       
-                      {/* Floating Microphone FAB with pulsating ring */}
-                      <div className="absolute -right-5 -bottom-5 z-20">
-                        <button
-                          type="button"
-                          onClick={() => setIsListening(true)}
-                          className="w-11 h-11 rounded-full bg-[#6366F1] hover:bg-[#4f46e5] text-white flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all cursor-pointer animate-pulse-indigo border border-indigo-400/20"
-                          title="Open Voice Assistant"
-                        >
-                          <Mic size={18} className="stroke-[2.5px]" />
-                        </button>
-                      </div>
-                      
                       {/* Message Thread */}
                       {submittedRequirement && (
                         <div className="w-full mb-3 space-y-3.5 border-b border-[#EAECF0] pb-3 animate-in fade-in duration-200">
@@ -643,7 +556,7 @@ export default function App() {
                       <div className="flex justify-end items-center gap-3 mt-1">
                         <button 
                           type="button"
-                          onClick={() => setIsListening(true)}
+                          onClick={() => triggerToast("Voice input simulated! Tap to speak requirement.")}
                           className="text-[#475467] hover:text-[#6366F1] transition-colors cursor-pointer shrink-0"
                           title="Simulate Voice Input"
                         >
@@ -1063,29 +976,15 @@ export default function App() {
               </div>
 
               {/* Center 3D Viewport (6 Columns / span-6) */}
-              <div className="lg:col-span-6 flex flex-col h-[480px] justify-between relative">
+              <div className="lg:col-span-6 flex flex-col h-[480px] justify-between">
                 <CarVisualizer 
                   toggles={toggles}
                   activeHotspot={activeHotspot}
                   setActiveHotspot={setActiveHotspot}
                   selectedPaint={selectedPaint}
                   selectedWheel={selectedWheel}
-                  avatarSpeechBubble={avatarSpeechBubble}
-                  setAvatarSpeechBubble={setAvatarSpeechBubble}
                   className="flex-1"
                 />
-                
-                {/* Floating Microphone FAB with pulsating ring on Screen 2 */}
-                <div className="absolute right-4 bottom-20 z-40">
-                  <button
-                    type="button"
-                    onClick={() => setIsListening(true)}
-                    className="w-11 h-11 rounded-full bg-[#6366F1] hover:bg-[#4f46e5] text-white flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all cursor-pointer animate-pulse-indigo border border-indigo-400/20"
-                    title="Open Voice Assistant"
-                  >
-                    <Mic size={18} className="stroke-[2.5px]" />
-                  </button>
-                </div>
                 
                 {/* Tip box placed below the 3D viewport */}
                 <div className="bg-indigo-50/50 rounded-[12px] p-3.5 border border-indigo-100/50 text-[10px] text-indigo-700 leading-relaxed font-medium mt-4 shrink-0">
@@ -1421,93 +1320,6 @@ export default function App() {
                 </button>
               </div>
             </div>
-          </div>
-        </div>
-      )}
-
-      {/* Voice Assistant Overlay Modal */}
-      {isListening && (
-        <div className="fixed inset-0 bg-[#0F172A]/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-in fade-in duration-300">
-          <div className="bg-white border border-[#EAECF0] rounded-[24px] p-8 max-w-md w-full mx-4 shadow-2xl relative animate-in zoom-in-95 duration-300 text-center space-y-6">
-            
-            {/* Close Modal Button */}
-            <button 
-              onClick={() => {
-                setIsListening(false)
-                setIsProcessing(false)
-              }}
-              className="absolute top-5 right-5 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
-            >
-              <X size={18} />
-            </button>
-
-            <div className="space-y-1">
-              <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-wider block">Voice Concierge</span>
-              <h3 className="text-lg font-bold text-[#101828]">
-                {isProcessing ? "Processing Query..." : "Listening..."}
-              </h3>
-            </div>
-
-            {/* Active Audio Waveform Visualizer */}
-            <div className="h-16 flex items-center justify-center gap-1.5 py-2">
-              {isProcessing ? (
-                // Simulated processing spinner/loader
-                <div className="flex flex-col items-center gap-2">
-                  <div className="w-8 h-8 rounded-full border-4 border-indigo-100 border-t-[#6366F1] animate-spin"></div>
-                  <span className="text-[10px] text-gray-400 font-medium animate-pulse">Analyzing voice requirements...</span>
-                </div>
-              ) : (
-                // Multi-bar pulsating waveforms
-                [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((bar) => {
-                  const baseHeight = [12, 24, 48, 36, 16, 28, 56, 40, 20, 32, 44, 24, 16, 36, 12][bar - 1]
-                  return (
-                    <div
-                      key={bar}
-                      className="w-1.5 bg-[#6366F1] rounded-full animate-waveform-bar"
-                      style={{
-                        height: `${baseHeight}px`,
-                        animationDelay: `${(bar - 1) * 0.08}s`,
-                      }}
-                    />
-                  )
-                })
-              )}
-            </div>
-
-            {/* Listening helper microcopy */}
-            <div className="bg-[#F8F9FA] rounded-[12px] border border-[#EAECF0] p-3 text-center">
-              <p className="text-xs text-indigo-700 italic font-medium">
-                Try saying: "Is it easy to get into the backseat?"
-              </p>
-            </div>
-
-            {/* Suggestions list wrapper */}
-            <div className="space-y-2.5 text-left pt-2">
-              <span className="text-[10px] uppercase tracking-wider text-gray-400 font-bold block">
-                Tap to simulate voice queries:
-              </span>
-              <div className="grid grid-cols-1 gap-2">
-                {[
-                  { text: 'Does it have a big trunk for groceries?', key: 'bootVisualizer', label: 'Boot Capacity' },
-                  { text: 'Is it easy to get into the backseat?', key: 'cabinAccess', label: 'Cabin Access' },
-                  { text: 'Is it safe for kids?', key: 'isofix', label: 'Child Seat anchors' },
-                  { text: 'What audio system does it have?', key: 'audioPack', label: 'Premium Audio Pack' }
-                ].map((query, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => handleVoiceQuery(query.text, query.key, query.label)}
-                    disabled={isProcessing}
-                    className="w-full bg-white hover:bg-indigo-50/50 border border-[#D0D5DD] hover:border-indigo-200 text-[#344054] hover:text-indigo-700 text-xs font-semibold py-2.5 px-4 rounded-[12px] text-left transition-all duration-150 active:scale-[0.99] flex items-center justify-between group cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    <span>"{query.text}"</span>
-                    <span className="text-[9px] bg-slate-100 group-hover:bg-indigo-100 text-slate-500 group-hover:text-indigo-700 px-2 py-0.5 rounded-[6px] font-bold uppercase transition-colors shrink-0 ml-2">
-                      {query.label}
-                    </span>
-                  </button>
-                ))}
-              </div>
-            </div>
-
           </div>
         </div>
       )}
